@@ -1,15 +1,46 @@
-
 <html>
+
 <head>
+    <style>
+    button {
+        display: block;
+        clear: both;
+        margin-top: 20px;
+    }
+    
+    section {
+        margin: 20px;
+        border-bottom: 1px solid #ccc;
+        padding: 20px;
+    }
+    </style>
+    <script src="exploring-js.js"></script>
+</head>
 
-    </head>
-    <body>
-
-<button id="get-types"> Get Types</button>
-
-<script src="exploring-js.js"></script>
-
-
-
+<body>
+    <h1>Exploring JS</h1>
+    <p>A random document to insert things over time that I find funny, strange and enlightening about JavaScipt. Please open a console to view the output.
+        <p/>
+        <section>
+            <br>
+            <br> Comparing the interpretation of Types with typeof(), of note are the last 3 responses.
+            <button id="get-types"> Get Types</button>
+        </section>
+        <section>
+            It is possible to give almost every variable in the environment a new value. This can be useful but also dangerous. If you give alert the value 8, it is no longer a function, and you won’t be able to use it to show messages. Reassigning the "Alert" function. Any JS function it seems can be re-assigned. Including Window.
+            <button id="assign-alert">Assign Alert</button>
+        </section>
+        <section>
+            We all use functions in Objects, but they can also be used in Arrays.
+            <br>
+            <br> The important thing to remember is that functions are first class objects in JavaScript. So you can pass them around as parameters, use them as object values and so on. Value(s) in an array are just one example of that.
+            <br>
+            <br>Never used this pattern myself but it could lead to some interesting things. If Arrays and Objects are different then how does this effect the way they call 'child' functions?
+            <script>
+            getJS('something');
+            </script>
+            <button id="use-function-from-array">Use Function from Array</button>
+        </section>
 </body>
+
 </html>
