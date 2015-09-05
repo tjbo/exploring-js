@@ -44,6 +44,49 @@ var display_types = function() {
 	get_type(NaN, 'NaN', 'warn');
 };
 
+// now lets use a comparison
+
+function equalValue(val1, val2, log_style, msg) {
+	var ex = (val1 == val2)
+	var content = '' + typeof(val1) + ': ' + val1 + ' == ' + typeof(val2) + ': ' + val2
+	console.log(content);
+	console.log(ex);
+
+	if(log_style === 'warn') {
+		console.warn(msg)
+
+	}
+}
+
+function equalValueAndEqualType(val1, val2, log_style, msg) {
+	var ex = (val1 === val2)
+	console.log(typeof(val1) + ': ' + val1 + ' === ' + typeof(val2) + ': ' + val2)
+	console.log(ex)
+
+	if(log_style === 'warn') {
+		console.warn(msg)
+
+	}
+}
+
+var compareStuff = function() {
+	console.clear();
+	var x
+	var arr = []
+
+	equalValue(1, "1", 'warn', 'Above: One value is a string and the other is a number. It returns true because it is not comparing the types.')
+	equalValueAndEqualType(1, "1", 'warn', 'Now it is using === and so is returning false, because one is a string and the other is a number. So === compares values and type.')
+
+	// equalValue(arr, {})
+	// equalValueAndEqualType(arr, {})
+
+	// equalValue(x, null)
+	// equalValueAndEqualType(x, null)
+
+}
+
+compareStuff();
+
 // interestingly we can reassign the DOM functions, this works with anything that is loaded into the DOM in a Web Browser, for example window, which I passed to this program in the onload
 
 // JS environment can be modified quite easily
@@ -70,6 +113,7 @@ var useFunctionFromArray = function() {
 
 // #4: add 2 functions together
 var add2Functions = function() {
+	console.clear()
 	var one = function() {
 		return 1
 	}
@@ -201,17 +245,10 @@ null === undefined;
 ! false
 "5" === 5; ! false
 
-different results... frist is true, second is false, because in first one JS is converting types... better to always use === and if you want to compare types use typeof
 
 
-	console.log(null == undefined);
-	true
 
-	console.log(null === undefined);
-	false
-
-	console.log(typeof(null) == typeof(undefined));
-	this will return false*/
+	*/
 
 document.addEventListener("DOMContentLoaded", function() {
 
@@ -220,10 +257,13 @@ document.addEventListener("DOMContentLoaded", function() {
 		['get-types', display_types],
 		['assign-alert', assignAlert],
 		['use-function-from-array', useFunctionFromArray],
-		['add2Functions', add2Functions]
+		['add-2-Functions', add2Functions],
+		['dont-call-me', dontCallMe],
+		['compare-stuff', compareStuff]
 	]
 
 	for(var e = 0; e < buttons.length; e++) {
+
 		var el = document.getElementById(buttons[e][0])
 		el.addEventListener('click', buttons[e][1])
 

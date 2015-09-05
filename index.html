@@ -27,6 +27,18 @@
             <button id="get-types"> Get Types</button>
         </section>
         <section>
+            It's important to always use '===' as your comparison operator. Doing this will save you alot of pain as it compares both value and type.
+            <br>
+            <br> console.log(null==u ndefined)
+            <br> returns -> true
+            <br>
+            <br> console.log(null === undefined)
+            <br> returns -> false
+            <br>
+            <br>
+            <button id="compare-stuff">Compare Stuff</button>
+        </section>
+        <section>
             It is possible to give almost every variable in the environment a new value. This can be useful but also dangerous. If you give alert the value 8, it is no longer a function, and you won’t be able to use it to show messages. Reassigning the "Alert" function. Any JS function it seems can be re-assigned. Including Window.
             <button id="assign-alert">Assign Alert</button>
         </section>
@@ -45,7 +57,12 @@
             Functions can be added, subtracted, multiplied, etc. The can also be compared, just about any logical operator works on them. in other words:
             <br>
             <br> one() + two() = 3
-            <button id="add2Functions">Add 2 Functions</button>
+            <button id="add-2-Functions">Add 2 Functions</button>
+        </section>
+        <section>
+            When functions aren't invoked with "()"" they are returned as strings.
+            <br>
+            <button id="dont-call-me">Please Don't Call Me</button>
         </section>
 </body>
 
