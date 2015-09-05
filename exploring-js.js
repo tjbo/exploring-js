@@ -1,17 +1,34 @@
 //exporing JS execution environment
 // just a small project to explore the finer points of javascript
 
+//just going to add everything as a global object since it makes for easy viewing in the debugger and this project is standalone...
+//just wanted to not here that I know what I'm doing is wrong
+
 // getJS, so I can view CODE examples in HTML
-
+// if project warrants it we can use this to write out the code in browser
 function getJS(whatToGet) {
+	var t = whatToGet.toString();
+	// document.write(t);
+}
 
+var printToConsole = function(content, log_style) {
+	if(log_style === 'warn') {
+		console.warn(content)
+	}
+	else {
+		console.log(content)
+
+	}
 }
 
 // example #1
-function get_type(thing, definition) {
+function get_type(thing, definition, log_style) {
 	var a = typeof(thing);
 	var b = definition;
-	console.log('This is supposed to be a ' + b + ', and is a ' + a + '.');
+	var c = 'This is supposed to be a ' + b + ', and is a ' + a + '.'
+
+	printToConsole(c, log_style)
+
 }
 
 var display_types = function() {
@@ -22,9 +39,9 @@ var display_types = function() {
 	get_type(true, 'boolean');
 	get_type(Symbol(), 'symbol');
 	get_type(undefined, 'undefined');
-	get_type(['red', 'blue', 'green', 'pink'], 'array');
-	get_type(null, 'null');
-	get_type(NaN, 'NaN');
+	get_type(['red', 'blue', 'green', 'pink'], 'array', 'warn');
+	get_type(null, 'null', 'warn');
+	get_type(NaN, 'NaN', 'warn');
 };
 
 // interestingly we can reassign the DOM functions, this works with anything that is loaded into the DOM in a Web Browser, for example window, which I passed to this program in the onload
@@ -41,8 +58,7 @@ var assignAlert = function() {
 	alert();
 }
 
-// some functions inside an array
-
+// #3: some functions inside an array
 var useFunctionFromArray = function() {
 	console.clear()
 	var arr = ['test1', function() {
@@ -52,13 +68,40 @@ var useFunctionFromArray = function() {
 	arr[1]()
 }
 
-// an interesting thing that js has
-// confirm("Shall we, then?");
+// #4: add 2 functions together
+var add2Functions = function() {
+	var one = function() {
+		return 1
+	}
 
-// not sure why these aren't used more often
-// prompt("Tell me everything you know.", "...");
+	var two = function() {
+		return 2
+	}
+	console.log(one() + two());
+}
 
-// print("X");
+var subtractFunctions = function() {
+	var one = function() {
+		return 1
+	}
+
+	var two = function() {
+		return 2
+	}
+	console.log(one() < two());
+}
+
+// #5: JavaScript functions are converted to strings unless you call them
+function pleaseDontCallMe() {
+	console.log('I am the same function as above, except this time I was called.')
+}
+
+function dontCallMe() {
+	console.clear()
+	var f = pleaseDontCallMe
+	console.log(f)
+	pleaseDontCallMe()
+}
 
 /*
 	All operators
@@ -171,15 +214,19 @@ different results... frist is true, second is false, because in first one JS is 
 	this will return false*/
 
 document.addEventListener("DOMContentLoaded", function() {
-	//example #1 buttons
-	var el = document.getElementById('get-types');
-	el.addEventListener("click", display_types);
 
-	//re assign alert function
-	var el = document.getElementById('assign-alert');
-	el.addEventListener("click", assignAlert);
+	//css id / function to call
+	var buttons = [
+		['get-types', display_types],
+		['assign-alert', assignAlert],
+		['use-function-from-array', useFunctionFromArray],
+		['add2Functions', add2Functions]
+	]
 
-	var el = document.getElementById('use-function-from-array');
-	el.addEventListener("click", useFunctionFromArray);
+	for(var e = 0; e < buttons.length; e++) {
+		var el = document.getElementById(buttons[e][0])
+		el.addEventListener('click', buttons[e][1])
+
+	}
 
 })
