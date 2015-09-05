@@ -19,6 +19,7 @@ var printToConsole = function(content, log_style) {
 		console.log(content)
 
 	}
+
 }
 
 // example #1
@@ -85,8 +86,6 @@ var compareStuff = function() {
 
 }
 
-compareStuff();
-
 // interestingly we can reassign the DOM functions, this works with anything that is loaded into the DOM in a Web Browser, for example window, which I passed to this program in the onload
 
 // JS environment can be modified quite easily
@@ -147,6 +146,29 @@ function dontCallMe() {
 	pleaseDontCallMe()
 }
 
+function addDifferentTypes() {
+	console.clear()
+	console.log(typeof('Appolo') + ' + ' + typeof(5))
+	console.log('Appolo' + 5)
+	printToConsole('^ This should probably return undefined.', 'warn')
+
+	console.log(typeof('Appolo') + ' + ' + typeof(null) + ' + ' + typeof('ify'))
+	console.log("Apollo5" + null + "ify")
+	printToConsole('^ This should probably return undefined.', 'warn')
+
+	console.log(typeof('strawberry') + ' * ' + typeof(5))
+
+	console.log("strawberry" * 5)
+	printToConsole('^ This should probably return undefined.', 'warn')
+
+}
+
+// There are some other situations that cause automatic type conversions to happen. If you add a nonstring value to a string, the value is automatically converted to a string before it is concatenated. If you multiply a number and a string, JavaScript tries to make a number out of the string.
+
+// "Apollo" + 5;
+// ! "Apollo5" null + "ify"; ! "nullify" "5" * 5;
+// ! 25 "strawberry" * 5; ! NaN
+
 /*
 	All operators
 	Unary Operators
@@ -172,19 +194,10 @@ modulus
 
 counter++
 
-	booleans
-	3>2
-	 true
-
-	 3<2
-	false
 
 
-There are some other situations that cause automatic type conversions to happen. If you add a nonstring value to a string, the value is automatically converted to a string before it is concatenated. If you multiply a number and a string, JavaScript tries to make a number out of the string.
 
-"Apollo" + 5;
-! "Apollo5" null + "ify"; ! "nullify" "5" * 5;
-! 25 "strawberry" * 5; ! NaN
+
 
 	Operators and Booleans can also be used on strings
 	"Aardvark" < "Zoroaster"
@@ -259,7 +272,8 @@ document.addEventListener("DOMContentLoaded", function() {
 		['use-function-from-array', useFunctionFromArray],
 		['add-2-Functions', add2Functions],
 		['dont-call-me', dontCallMe],
-		['compare-stuff', compareStuff]
+		['compare-stuff', compareStuff],
+		['add-different-types', addDifferentTypes]
 	]
 
 	for(var e = 0; e < buttons.length; e++) {
