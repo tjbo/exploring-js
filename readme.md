@@ -1,6 +1,6 @@
 # Exploring JS
 
-Just a little guide to explain JavaScript on a deeper level and to have a place to put little things over time what I've learned about the language. You can copy and paste any of this code into Google Chrome tools to see the results, otherwise results are commented below each return.
+Just a little guide to summarize the finer points of JavaScript on a deeper level and to have a place to put little things over time what I've learned about the language. You can copy and paste any of this code into Google Chrome tools to see the results, otherwise results are commented below each return.
 
 ## 1. You may notice I'm not using semi-colons
 
@@ -117,4 +117,8 @@ And then call alert(), you will get something much different than the native imp
 
 An array can contain anything, where as an object or a map can only contain key, value pairs, the values in an object howerver can contain anything.
 
+
+TODO:
+- add a button that will log shit in chrome...
+- finsih going through exploring JS doc... and move all stuff here
 
