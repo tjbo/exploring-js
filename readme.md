@@ -1,10 +1,25 @@
-# Exploring JS
+## Exploring JS
 
-Just a little guide to summarize the finer points of JavaScript on a deeper level and to have a place to put little things over time what I've learned about the language. You can copy and paste any of this code into Google Chrome tools to see the results, otherwise results are commented below each return.
+Exploring JS is just a place I wanted to create to store everything that I know about JavaScript since the beginning. I have also always enjoyed writing, and lately I feel I have gotten away from this. And so what better way to kill two birds with one stone than to write about what I want to make I retain to memory.
+
+This guide is basically organic and so may change and reorganize over time as I continue to expand on it or fix typos.
+
+Where there is code, with javascript it can generally be copy and pasted into google chrome.
+
+Or if you have node installed you can also just type `node` in a terminal, hit enter, and you will get a prompt where you can execute JavaScript.
+
+I've also put comments in like `// returns 'something'` for each statement that would otherwise get executed. Just in case you do not feel like actually executing it yourself.
 
 ## 1. You may notice I'm not using semi-colons
 
-Some devs would say that you have to use them, but this actually isn't true. There are actually only a few places you need to use them, if any of the following are true, you need to use them:
+There have been many Semi-Colon debates and controversies over the years.
+
+
+Personally I believe in taking JavaScript to the hippest level that it can be at. In this hip and dangerous world, I do not use semi-colons.
+
+My JavaScript lives on a semi-colon-less 'nude beach' where it walks around in the morally reprehensible state of going without.
+
+There are actually only a few places you need to use them. Basically if any of the following are true, you need to use them:
 
 ```javascript
 ;-less	// line starts with unary - operator
@@ -14,11 +29,11 @@ Some devs would say that you have to use them, but this actually isn't true. The
 ;(less)	// line starts with grouping operator, such as IIFE
 ```
 
-It's important to note that the 5th item on this list is actually probably the only line you'd write in a production code base. But honestly, with ES6 I find I barely even write many IIFEs as compared to a year ago.
+It's important to note that the 5th item on this list is actually probably the only line you'd write in a production code base. But honestly, with ES6 I find I barely even write many IIFEs as compared to a few years ago, and so this is not even really true.
 
-Otherwise they can be omitted. Personally I now try to avoid using semi-colons in my own codebase. However at work, other people may be difficult to convince that you don't actually need them, especially developers where JavaScript is not their first language.
+Personally I now try to avoid using semi-colons in my own codebase. However at work, other people may be difficult to convince that you don't actually need them, especially developers where JavaScript is not their first language.
 
-Most of the reason behind using semi-colons were laid out by a man named Douglas Crockford. In my opinion, just because someone else has an opinion doesn't mean you should follow it.
+Most of the reason behind using semi-colons were laid out by a man named Douglas Crockford. In my opinion, just because someone else has an opinion doesn't mean you should follow it. And alot of other people believe in not using them.
 
 If you are working in a group, it's probably best to come to a consensus, and even better to use a linter.
 
@@ -26,8 +41,12 @@ If you are joining a group that is already a semi-colon group, it's probably bes
 
 It's also important to point out that JavaScript has something called Automatic Semi-Colon insertion. I want go into the details of that here, but basically JavaScript will inject the semi-colons for you when it runs.
 
-[1] : http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding
-[2] : http://mislav.net/2010/05/semicolons/
+If you really don't know what you are doing, and don't care to find out, my advice to you is to use them.
+
+If this was mind blowing information for you and you want to go deeper on this topic, I'd recommend the following two articles:
+
+[1] http://blog.izs.me/post/2353458699/an-open-letter-to-javascript-leaders-regarding
+[2] http://mislav.net/2010/05/semicolons/
 
 
 ## 2. You may notice I'am using `` instead of ''.
@@ -38,7 +57,7 @@ var something = 'the string'
 console.log('it\'s a string named' + something)
 ```
 
-Whereas nowadays you can use the much more superior string denonator:
+Whereas nowadays you can use the much more superior string denonator, and your JavaScript will be very hip:
 
 ```javascript
 
@@ -56,7 +75,7 @@ An IFFE (pronoucend ify), is an immediately invoked function expression.
 })()
 ```
 
-The first set of parenthese is what makes it an expression, and the () on the end is what 'immediately invokes it'. ANd of course the *function* keyword is what makes it a function.
+The first set of parenthese is what makes it an expression, and the () on the end is what `immediately invokes it` which are fancy words for 'executes it automatically', which are fancier words for `makes it do stuff`. And of course the *function* keyword is what makes it a function.
 
 ```javascript
 (function() {
@@ -64,7 +83,7 @@ The first set of parenthese is what makes it an expression, and the () on the en
 }())
 ```
 
-In this exaple I've moved the second set of parenthesis to the inside of the first set, it really is no different.
+In this example I've moved the second set of parenthesis inside the first set – but it makes no difference.
 
 ```javascript
 (function(str) {
@@ -72,13 +91,11 @@ In this exaple I've moved the second set of parenthesis to the inside of the fir
 }(`and just passed another string to myself`))
 ```
 
-You may also see the above in the wild, where something get's passed into what you are invoking. This is a good pattern if you want to pass things into your scope, but also keep it protected.
+You may also see the above in the wild, where something get's passed into what you are invoking. This is a good pattern if you want to pass things into your scope, but also want keep it protected.
 
-If you are coding in an ES6 codebase you tend to use less of theses than in former days gone by. Mostly because an IFFE is a good way to isolate your variables and keep them from being hoisted into the global scope when you don't have modules. But since ES6 has modules you are generally free to not use them.
-
+If you are coding in an ES6 codebase you tend to use less of theses than in days gone by. Mostly because an IFFE is a good way to isolate your variables and keep them from being hoisted into the global scope when you don't have modules.
 
 This pattern is often used when trying to avoid polluting the global namespace, because all the variables used inside the IIFE (like in any other normal function) are not visible outside its scope.
-This is why, maybe, you confused this construction with an event-handler for window.onload, because it’s often used as this:
 
 ```javascript
 (function(){
@@ -90,9 +107,9 @@ This is why, maybe, you confused this construction with an event-handler for win
 // foo is unreachable here (it’s undefined)
 ```
 
+In the above example, it's important to note that window is accessible. Window since in this case it is the global, is actually accessible at every point in time.
 
-
-
+You will often here people talk about not pollutiong the global scope. Almost every program will have one or even a few things in the gobal scope in practice. But what this idea basically means is to not *hoist* everything onto the global scope`. THe reason you avoid this, is because not doing it allows some parts of your code to stay 'private' and modularized.
 
 
 ## 4 More than just Logging
