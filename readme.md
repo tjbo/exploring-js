@@ -64,7 +64,7 @@ The first set of parenthese is what makes it an expression, and the () on the en
 }())
 ```
 
-This can also be written this way, and it really is no different.
+In this exaple I've moved the second set of parenthesis to the inside of the first set, it really is no different.
 
 ```javascript
 (function(str) {
@@ -74,7 +74,8 @@ This can also be written this way, and it really is no different.
 
 You may also see the above in the wild, where something get's passed into what you are invoking. This is a good pattern if you want to pass things into your scope, but also keep it protected.
 
-If you are coding in an ES6 codebase you tend to use less of theses than in former days gone by. Mostly because an IFFE is a good way to isolate your variables and keep them from being hoisted into the global scope.
+If you are coding in an ES6 codebase you tend to use less of theses than in former days gone by. Mostly because an IFFE is a good way to isolate your variables and keep them from being hoisted into the global scope when you don't have modules. But since ES6 has modules you are generally free to not use them.
+
 
 This pattern is often used when trying to avoid polluting the global namespace, because all the variables used inside the IIFE (like in any other normal function) are not visible outside its scope.
 This is why, maybe, you confused this construction with an event-handler for window.onload, because it’s often used as this:
